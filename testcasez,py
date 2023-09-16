@@ -1,0 +1,49 @@
+import unittest
+from stricterBM import z_algorithm
+
+
+class TestCases(unittest.TestCase):
+    def test_z_algorithm(self):
+        # Test case 1
+        p = "ababcabab"
+        z_values = z_algorithm(p)
+        self.assertEqual(
+            z_values, [9, 0, 2, 0, 0, 4, 0, 2, 0], "Test case 1 failed")
+
+        # Test case 2
+        p = "aaaaaa"
+        z_values = z_algorithm(p)
+        self.assertEqual(z_values, [6, 5, 4, 3, 2, 1], "Test case 2 failed")
+
+        # Test case 3
+        p = "abcde"
+        z_values = z_algorithm(p)
+        self.assertEqual(z_values, [5, 0, 0, 0, 0], "Test case 3 failed")
+
+        # Test case 4
+        p = "abcdabcda"
+        z_values = z_algorithm(p)
+        self.assertEqual(
+            z_values, [9, 0, 0, 0, 5, 0, 0, 0, 1], "Test case 4 failed")
+
+        # Test case 5
+        p = "abcdeedcba"
+        z_values = z_algorithm(p)
+        self.assertEqual(
+            z_values, [10, 0, 0, 0, 0, 0, 0, 0, 0, 1], "Test case 5 failed")
+
+        # Test case 6
+        p = "aabaacaabaa"
+        z_values = z_algorithm(p)
+        self.assertEqual(
+            z_values, [11, 1, 0, 2, 1, 0, 5, 1, 0, 2, 1], "Test case 6 failed")
+
+        # Test case 7
+        p = "ababababab"
+        z_values = z_algorithm(p)
+        self.assertEqual(
+            z_values, [10, 0, 8, 0, 6, 0, 4, 0, 2, 0], "Test case 7 failed")
+
+
+if __name__ == '__main__':
+    unittest.main()
