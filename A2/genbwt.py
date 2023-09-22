@@ -37,7 +37,7 @@ class Node:
         newNode = Node(self.id)
         newNode.start = self.start
         newNode.end = self.end
-        newNode.children = self.children
+        newNode.children = self.children.copy()
         newNode.suffixLink = self.suffixLink
         newNode.minCharAscii = self.minCharAscii
         newNode.maxCharAscii = self.maxCharAscii
