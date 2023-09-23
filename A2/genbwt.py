@@ -246,6 +246,14 @@ class SuffixTree:
         return dot
 
 
+def generateBWT(s, verbose=False):
+    s += '$'
+    sT = SuffixTree(minChar=MIN_CHAR, maxChar=MAX_CHAR)
+    sT.insertAll(s, verbose=verbose)
+
+    return ''.join([s[i] for i in sT.bwt()])
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('inputFile', type=str, help='Path to the input file.')
@@ -259,12 +267,9 @@ if __name__ == '__main__':
     verbose = args.verbose
     with open(inputFile, 'r') as f:
         text = f.readline().strip()
-        text += '$'
     if verbose:
         print(f'input text: {text}')
-    sT = SuffixTree(minChar=MIN_CHAR, maxChar=MAX_CHAR)
-    sT.insertAll(text, verbose=verbose)
-    bwtWord = ''.join([text[i] for i in sT.bwt()])
+    bwtWord = generateBWT(text, verbose=verbose)
     if verbose:
         sT.printTree().view()
         print("BWT: ", bwtWord)
